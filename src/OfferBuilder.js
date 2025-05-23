@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import generateOfferPDF from "./generateOfferPDF";
 
-const services = [
+const servicesList = [
   { name: "Strategie-Workshop", price: 320 },
   { name: "Marketingstrategie (individuell)", price: 690 },
   { name: "Videodreh vor Ort (1 Tag)", price: 650 },
@@ -21,10 +22,10 @@ export default function OfferBuilder() {
     );
   };
 
-  const total = selected.reduce(
-    (acc, name) => acc + (services.find((s) => s.name === name)?.price || 0),
-    0
+  const selectedServices = servicesList.filter((s) =>
+    selected.includes(s.name)
   );
+  const total = selectedServices.reduce((acc, s) => acc + s.price, 0);
 
   return (
     <div style={{ padding: "2rem", maxWidth: "700px", margin: "0 auto" }}>
@@ -40,7 +41,7 @@ export default function OfferBuilder() {
 
       <label>Leistungen:</label>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-        {services.map((service) => (
+        {servicesList.map((service) => (
           <button
             key={service.name}
             onClick={() => toggleService(service.name)}
@@ -60,6 +61,23 @@ export default function OfferBuilder() {
       <div style={{ marginTop: "1rem" }}>
         <strong>Gesamtpreis: {total.toLocaleString("de-DE")} €</strong>
       </div>
+
+      <button
+        onClick={() =>
+          generateOfferPDF(client, selectedServices, total.toLocaleString("de-DE"))
+        }
+        style={{
+          marginTop: "1rem",
+          padding: "0.5rem 1rem",
+          background: "#00a8b9",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+        }}
+      >
+        PDF erstellen
+      </button>
     </div>
   );
 }
