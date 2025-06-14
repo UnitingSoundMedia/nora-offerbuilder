@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NORA Angebotsmodul</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NORA Live</title>
+  <style>
+    body {
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    img {
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .welcome {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #333;
+    }
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Willkommen bei NORA</h1>
+  <img src="avatar_nora.png" alt="NORA Avatar" />
+  <div class="welcome">
+    <p>Hallo und herzlich willkommen! Ich bin NORA, deine digitale Assistentin mit Stil. Ich begleite dich durch deine Projekte und helfe dir, immer einen Schritt voraus zu sein.</p>
+    <p>(Falls du keinen Ton hörst: aktiviere bitte den Sound oder lies den Text hier.)</p>
+  </div>
+  <audio controls autoplay>
+    <source src="NORA_Voice_Intro_DE_Rachel_v1.mp3" type="audio/mpeg">
+    Dein Browser unterstützt das Audio-Element nicht.
+  </audio>
+</body>
 </html>
